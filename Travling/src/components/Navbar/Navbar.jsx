@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.jpg";
 import { FaCaretDown } from "react-icons/fa";
+import { HiMenuAlt1, HiMenuAlt3 } from "react-icons/hi";
+import ResponsiveMenu  from './RsponsiveMenu'
+
+export const NavbarLinks = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "About",
+    link: "/about",
+  },
+  {
+    name: "Blogs",
+    link: "/blogs",
+  },
+  {
+    name: "Best Places",
+    link: "/best-places",
+  },
+];
+
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   const dropdownLinks = [
     {
       name: "Our Services",
@@ -50,7 +80,7 @@ const Navbar = () => {
                 </li>
                 <li className="py-4">
                   <NavLink
-                   activeclassname="active"
+                    activeclassname="active"
                     to="/blogs"
                     onClick={() => window.scrollTo(0, 0)}
                   >
@@ -59,7 +89,7 @@ const Navbar = () => {
                 </li>
                 <li className="py-4">
                   <NavLink
-                   activeclassname="active"
+                    activeclassname="active"
                     to="/places"
                     onClick={() => window.scrollTo(0, 0)}
                   >
@@ -85,30 +115,47 @@ const Navbar = () => {
                   <div className=" absolute -left-9 z-[9999] hidden group-hover:block shadow-md text-black w-[150px] bg-white p-2">
                     <ul>
                       {dropdownLinks.map(({ name, link }) => {
-                        return(
+                        return (
                           <li key={name}>
-                          <a
-                            className=" inline-block w-full rounded-md p-2 hover:bg-primary/20"
-                            href={link}
-                          >
-                            {name}
-                          </a>
-                        </li>
-                        )
+                            <a
+                              className=" inline-block w-full rounded-md p-2 hover:bg-primary/20"
+                              href={link}
+                            >
+                              {name}
+                            </a>
+                          </li>
+                        );
                       })}
                     </ul>
                   </div>
                 </li>
               </ul>
             </div>
+            <div className=" flex  text-center gap-4">
             <div>
-              <button className=" bg-gradient-to-r from-primary to-secondary hover: bg-bg-gradient-to-r hover:from-secondary hover:bg-primary transition-all duration-500 text-white px-3 py-1 rounded-full">Book Now</button>
-              <div className=" md:hidden block">
-
-              </div>
+              <button className=" bg-gradient-to-r from-primary to-secondary hover: bg-bg-gradient-to-r hover:from-secondary hover:bg-primary transition-all duration-500 text-white px-3 py-1 rounded-full">
+                Book Now
+              </button>
+            </div>
+            <div className=" md:hidden block">
+              {showMenu ? (
+                <HiMenuAlt1
+                  onClick={toggleMenu}
+                  className=" cursor-pointer transition-all"
+                  size={30}
+                />
+              ) : (
+                <HiMenuAlt3
+                  onClick={toggleMenu}
+                  className=" cursor-pointer transition-all"
+                  size={30}
+                />
+              )}
+            </div>
             </div>
           </div>
         </div>
+        <ResponsiveMenu setShowMenu={setShowMenu} showMenu={showMenu} />
       </div>
     </>
   );
