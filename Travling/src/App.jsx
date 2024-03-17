@@ -6,8 +6,23 @@ import Blogs from "./pages/Blogs";
 import PlacesRoute from "./pages/PlacesRoute";
 import BlogsDetails from "./pages/BlogsDetails";
 import NoPage from "./pages/NoPage";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+
 
 export default function App() {
+
+useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 900,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
+
   return (
     <>
       <BrowserRouter>
