@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NatureVid from "../assets/video/main.mp4"
 import Hero from '../components/Hero/Hero'
+import BlogsComp from '../components/Blogs/BlogsComp';
+
+import BannerImg from '../assets/cover-women.jpg';
+import BannerPic from '../components/BannerPic/BannerPic';
+
+
 
 const Home = () => {
+
+  const [orderPopup, setOrderPopup] = useState(false);
+
+  const handleOrderPopup = () => {
+    setOrderPopup(!orderPopup);
+  };
   return (
     <>
       <div>
@@ -17,6 +29,9 @@ const Home = () => {
           </video>
           <Hero />
         </div>
+     
+       <BannerPic img={BannerImg} />
+        <BlogsComp />
       </div>
     </>
   )
