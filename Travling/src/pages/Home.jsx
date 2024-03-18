@@ -9,9 +9,10 @@ import Places from "../components/Places/Places";
 import Banner from "../components/Banner/Banner";
 import Banner2 from "../assets/travel-cover2.jpg";
 import Testimonial from "../components/Testimonial/Testimonial";
+import OrderPopup from "../components/OrderPopup/OrderPopup";
 
 const Home = () => {
-  const [orderPopup, setOrderPopup] = useState(false);
+  const [orderPopup, setOrderPopup] = useState(true);
 
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
@@ -36,6 +37,7 @@ const Home = () => {
         <Banner />
         <BannerPic img={Banner2} />
         <Testimonial />
+        <OrderPopup orderPopup={orderPopup} setOrderPopup={setOrderPopup} />
       </div>
     </>
   );
