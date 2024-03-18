@@ -25,7 +25,7 @@ export const NavbarLinks = [
 ];
 
 
-const Navbar = () => {
+const Navbar = ({ handleOrderPopup }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   
@@ -133,7 +133,9 @@ const Navbar = () => {
             </div>
             <div className="flex gap-4 md:pt-4 ">
             <div>
-              <button className="px-3 py-1 text-white transition-all duration-500 rounded-full bg-gradient-to-r from-primary to-secondary hover: bg-bg-gradient-to-r hover:from-secondary hover:bg-primary">
+              <button 
+                onClick={handleOrderPopup}
+              className="px-3 py-1 text-white transition-all duration-500 rounded-full bg-gradient-to-r from-primary to-secondary hover: bg-bg-gradient-to-r hover:from-secondary hover:bg-primary">
                 Book Now
               </button>
             </div>

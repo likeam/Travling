@@ -12,7 +12,7 @@ import Testimonial from "../components/Testimonial/Testimonial";
 import OrderPopup from "../components/OrderPopup/OrderPopup";
 
 const Home = () => {
-  const [orderPopup, setOrderPopup] = useState(true);
+  const [orderPopup, setOrderPopup] = useState(false);
 
   const handleOrderPopup = () => {
     setOrderPopup(!orderPopup);
